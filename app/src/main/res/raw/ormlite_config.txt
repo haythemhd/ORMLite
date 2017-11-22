@@ -1,0 +1,23 @@
+#
+# generated on 2017/10/24 12:31:21
+#
+# --table-start--
+dataClass=haythem.hd.ormliteproject.Note
+tableName=note
+# --table-fields-start--
+# --field-start--
+fieldName=id
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=subject
+# --field-end--
+# --field-start--
+fieldName=text
+# --field-end--
+# --field-start--
+fieldName=date
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
