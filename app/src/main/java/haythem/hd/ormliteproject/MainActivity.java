@@ -19,7 +19,7 @@ import com.j256.ormlite.dao.Dao;
 
 import java.sql.SQLException;
 
-public class MainActivity extends AppCompatActivity  implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS =1 ;
     DatabaseHelper dbHelper;
@@ -32,29 +32,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.READ_CONTACTS)
-                != PackageManager.PERMISSION_GRANTED) {
-            Log.i("Test","1");
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                    Manifest.permission.READ_CONTACTS)) {
-                Log.i("Test","2");
-                //Cela signifie que la permission à déjà était
-                //demandé et l'utilisateur l'a refusé
-                //Vous pouvez aussi expliquer à l'utilisateur pourquoi
-                //cette permission est nécessaire et la redemander
-                ActivityCompat.requestPermissions(this,
-                        new String[]{Manifest.permission.READ_CONTACTS},
-                        MY_PERMISSIONS_REQUEST_READ_CONTACTS);
 
-            } else {
-                Log.i("Test","3");
-                //Sinon demander la permission
-                ActivityCompat.requestPermissions(this,
-                        new String[]{Manifest.permission.READ_CONTACTS},
-                        MY_PERMISSIONS_REQUEST_READ_CONTACTS);
-            }
-        }
 
 
         setContentView(R.layout.activity_main);
@@ -97,7 +75,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         }
     }
 
-    // This is how, DatabaseHelper can be initialized for future use
+    // This is how DatabaseHelper can be initialized for future use
     private DatabaseHelper getHelper() {
         if (databaseHelper == null) {
             databaseHelper = OpenHelperManager.getHelper(this,DatabaseHelper.class);
@@ -136,6 +114,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
 
                 try {
                     // This is how, a reference of DAO object can be done
+                    //Okey. What's the Integer?
                     final Dao<Note, Integer> noteDao = getHelper().getNotesDao();
 
                     //This is the way to insert data into a database table

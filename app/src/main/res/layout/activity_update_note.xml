@@ -28,6 +28,6 @@
         android:id="@+id/list_bt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Update"
+        android:text="Back"
         />
 </LinearLayout>

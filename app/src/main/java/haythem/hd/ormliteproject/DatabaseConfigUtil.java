@@ -1,7 +1,6 @@
 package haythem.hd.ormliteproject;
 
 import com.j256.ormlite.android.apptools.OrmLiteConfigUtil;
-
 import java.io.IOException;
 import java.sql.SQLException;
 
