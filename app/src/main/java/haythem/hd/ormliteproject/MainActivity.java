@@ -1,15 +1,10 @@
 package haythem.hd.ormliteproject;
 
-import android.Manifest;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,8 +16,6 @@ import java.sql.SQLException;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS =1 ;
-    DatabaseHelper dbHelper;
     // Reference of DatabaseHelper class to access its DAOs and other components
     private DatabaseHelper databaseHelper = null;
 
@@ -32,8 +25,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
 
         setContentView(R.layout.activity_main);
 
@@ -46,54 +37,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         submit_btn.setOnClickListener(this);
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           String permissions[], int[] grantResults) {
-        switch (requestCode) {
-            case MY_PERMISSIONS_REQUEST_READ_CONTACTS: {
-                Log.i("Test","4");
-                // If request is cancelled, the result arrays are empty.
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Log.i("Test","5");
-
-                    // permission was granted, yay! Do the
-                    // contacts-related task you need to do.
-
-                } else {
-                    Log.i("Test","6");
-                    Intent in = new Intent(MainActivity.this,ViewNoteRecordActivity.class);
-                    startActivity(in);
-                    // permission denied, boo! Disable the
-                    // functionality that depends on this permission.
-                }
-                return;
-            }
-
-            // other 'case' lines to check for other
-            // permissions this app might request
-        }
-    }
-
     // This is how DatabaseHelper can be initialized for future use
     private DatabaseHelper getHelper() {
         if (databaseHelper == null) {
             databaseHelper = OpenHelperManager.getHelper(this,DatabaseHelper.class);
         }
         return databaseHelper;
-    }
-
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-		/*
-		 * You'll need this in your class to release the helper when done.
-		 */
-        if (databaseHelper != null) {
-            OpenHelperManager.releaseHelper();
-            databaseHelper = null;
-        }
     }
 
     @Override
@@ -190,8 +139,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         alertDialog.show();
     }
 
-
-
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        /*
+         * You'll need this in your class to release the helper when done.
+         */
+        if (databaseHelper != null) {
+            OpenHelperManager.releaseHelper();
+            databaseHelper = null;
+        }
+    }
 
 }
