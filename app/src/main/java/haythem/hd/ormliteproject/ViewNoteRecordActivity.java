@@ -93,7 +93,6 @@ public class ViewNoteRecordActivity extends AppCompatActivity implements Adapter
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
 		/*
 		 * You'll need this in your class to release the helper when done.
 		 */
@@ -140,7 +139,6 @@ public class ViewNoteRecordActivity extends AppCompatActivity implements Adapter
                         try {
                             // This is how, data from the database can be deleted
                             noteDao.delete(noteList.get(selectedRecordPosition));
-
 
                             // Removing the same from the List to remove from display as well
                             noteList.remove(selectedRecordPosition);
