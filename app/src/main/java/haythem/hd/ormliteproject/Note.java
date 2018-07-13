@@ -1,6 +1,7 @@
 package haythem.hd.ormliteproject;
 
 import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
 import java.util.Date;
 
@@ -8,6 +9,8 @@ import java.util.Date;
  * Created by Haythem on 24/10/2017.
  */
 
+
+@DatabaseTable(tableName = "note")
 public class Note {
 
     @DatabaseField(generatedId = true)

@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.stmt.PreparedQuery;
@@ -71,6 +72,7 @@ public class UpdateNoteActivity extends AppCompatActivity {
                     updateBuilder.updateColumnValue("subject",subject.getText().toString());
                     updateBuilder.updateColumnValue("text",text.getText().toString());
                     updateBuilder.update();
+                    Toast.makeText(v.getContext(),"Note updated", Toast.LENGTH_LONG).show();
 
                 } catch (SQLException e) {
                     e.printStackTrace();

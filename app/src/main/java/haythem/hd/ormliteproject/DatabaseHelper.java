@@ -16,16 +16,13 @@ import java.sql.SQLException;
 
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
-
-
     private static final String DATABASE_NAME = "studentdir.db";
     private static final int DATABASE_VERSION = 1;
     private Dao<Note, Integer> noteDao =null;
 
     public DatabaseHelper(Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        super(context, DATABASE_NAME, null, DATABASE_VERSION, R.raw.ormlite_config);
     }
-
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase, ConnectionSource connectionSource) {
@@ -47,7 +44,6 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         }
     }
 
-
     public Dao<Note, Integer> getNotesDao() throws SQLException {
             if (noteDao == null) {
                 noteDao = getDao(Note.class);
@@ -55,12 +51,9 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             return noteDao;
     }
 
-
-
     @Override
     public void close() {
         super.close();
         noteDao=null;
     }
-
 }
